@@ -33,7 +33,7 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>model.Customer</beans:value>
+                <beans:value>model.Person</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -45,14 +45,15 @@
         </beans:property>
     </beans:bean>
  
-    <beans:bean id="customerDAO"
-        class="dao.CustomerDAOImpl">
+    <beans:bean id="personDAO"
+        class="dao.DefaultPersonDAO">
         <beans:property name="sessionFactory"
             ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
-    <beans:bean id="customerService"
-        class="service.CustomerServiceImpl">
-        <beans:property name="customerDAO" ref="customerDAO"></beans:property>
+    
+    <beans:bean id="personService"
+        class="service.DefaultPersonService">
+        <beans:property name="personDAO" ref="personDAO"/>
     </beans:bean>
     
  
