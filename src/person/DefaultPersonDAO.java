@@ -1,4 +1,4 @@
-package dao;
+package person;
 
 import java.util.List;
 
@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import model.Person;
-
 @Repository
 public class DefaultPersonDAO implements PersonDAO{
 
@@ -17,12 +15,8 @@ public class DefaultPersonDAO implements PersonDAO{
 
 	private SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.sessionFactory = sessionFactory;
-	}
-
 	@Override
-	public void add(Person person) {
+	public void add(PersonBean person) {
 		final Session session = this.sessionFactory.getCurrentSession();
 		session.persist(person);
 		logger.info("Person saved successfully, person Details="+person);
@@ -30,10 +24,15 @@ public class DefaultPersonDAO implements PersonDAO{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Person> find() {
+	public List<PersonBean> find() {
 		final Session session = this.sessionFactory.getCurrentSession();
-		final List<Person> personList = session.createQuery("from Person").list();
+		final List<PersonBean> personList = session.createQuery("from PersonBean").list();
 		return personList;
+	}
+
+
+	public void setSessionFactory(SessionFactory sessionFactory){
+		this.sessionFactory = sessionFactory;
 	}
 
 }

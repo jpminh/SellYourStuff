@@ -1,4 +1,4 @@
-package service;
+package person;
 
 import java.util.List;
 
@@ -7,9 +7,6 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import dao.PersonDAO;
-import model.Person;
 
 
 @Service
@@ -21,13 +18,13 @@ public class DefaultPersonService implements PersonService {
 
 	@Override
 	@Transactional
-	public void add(Person p) {
+	public void add(PersonBean p) {
 		this.personDAO.add(p);
 	}
 
 	@Override
 	@Transactional
-	public List<Person> find() {
+	public List<PersonBean> find() {
 		return this.personDAO.find();
 	}
 

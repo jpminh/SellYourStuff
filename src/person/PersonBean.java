@@ -1,4 +1,4 @@
-package model;
+package person;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PERSON")
 @ManagedBean(name="person")
-public class Person {
+public class PersonBean {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

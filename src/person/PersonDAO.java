@@ -1,8 +1,6 @@
-package dao;
+package person;
 
 import java.util.List;
-
-import model.Person;
 
 
 public interface PersonDAO {
@@ -10,11 +8,11 @@ public interface PersonDAO {
 	 * saves a Person in the database
 	 * @param p
 	 */
-	public void add(Person person);
+	public void add(PersonBean person);
 
 	/**
 	 *
 	 * @return the list of existing Persons
 	 */
-	public List<Person> find();
+	public List<PersonBean> find();
 }

@@ -33,7 +33,8 @@
         <beans:property name="dataSource" ref="dataSource" />
         <beans:property name="annotatedClasses">
             <beans:list>
-                <beans:value>model.Person</beans:value>
+                <beans:value>person.PersonBean</beans:value>
+                <beans:value>authentication.AuthenticationBean</beans:value>
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -46,14 +47,25 @@
     </beans:bean>
  
     <beans:bean id="personDAO"
-        class="dao.DefaultPersonDAO">
+        class="person.DefaultPersonDAO">
         <beans:property name="sessionFactory"
             ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
     
     <beans:bean id="personService"
-        class="service.DefaultPersonService">
+        class="person.DefaultPersonService">
         <beans:property name="personDAO" ref="personDAO"/>
+    </beans:bean>
+    
+    <beans:bean id="authenticationDAO"
+        class="authentication.DefaultAuthenticationDAO">
+        <beans:property name="sessionFactory"
+            ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    <beans:bean id="authenticationService"
+        class="authentication.DefaultAuthenticationService">
+        <beans:property name="authenticationDAO" ref="authenticationDAO"/>
     </beans:bean>
     
  

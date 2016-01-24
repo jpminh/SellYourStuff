@@ -1,8 +1,6 @@
-package service;
+package person;
 
 import java.util.List;
-
-import model.Person;
 
 
 public interface PersonService {
@@ -10,12 +8,12 @@ public interface PersonService {
 	 * saves a person
 	 * @param person
 	 */
-	public void add(Person person);
+	public void add(PersonBean person);
 
 	/**
 	 *
 	 * @return the list of existing persons
 	 */
-	public List<Person> find();
+	public List<PersonBean> find();
 
 }
