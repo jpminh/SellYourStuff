@@ -8,62 +8,29 @@
     xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <title>Home</title>
-    <style type="text/css">
-.tg {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border-color: #ccc;
-}
- 
-.tg td {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: #ccc;
-    color: #333;
-    background-color: #fff;
-}
- 
-.tg th {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 10px 5px;
-    border-style: solid;
-    border-width: 1px;
-    overflow: hidden;
-    word-break: normal;
-    border-color: #ccc;
-    color: #333;
-    background-color: #f0f0f0;
-}
- 
-.tg .tg-4eph {
-    background-color: #f9f9f9
-}
-</style>
 </h:head>
 <h:body>
-    <h1>Add a Customer</h1>
+	<p>Welcome #{user.username}</p>
+	<h:form>
+		<h:commandLink action="#{authenticationService.logout}" value="Logout"></h:commandLink>
+	</h:form>
+	
+    <h1>Add a person</h1>
     <h:form>
         <table>
             <tr>
                 <td><label>Name</label></td>
-                <td><h:inputText id="name" value="#{customer.name}"></h:inputText>
+                <td><h:inputText id="name" value="#{person.name}"></h:inputText>
                 </td>
             </tr>
             <tr>
                 <td><label>Country</label></td>
-                <td><h:inputText id="city" value="#{customer.city}"></h:inputText>
+                <td><h:inputText id="city" value="#{person.city}"></h:inputText>
                 </td>
             </tr>
             <tr>
                 <td colspan="2"><h:commandButton
-                        action="#{customerService.addCustomer(customer)}" value="Add Customer"></h:commandButton>
+                        action="#{personService.add(person)}" value="Add person"></h:commandButton>
                 </td>
             </tr>
  
@@ -72,20 +39,20 @@
     </h:form>
  
     <br />
-    <h3>Customers List</h3>
+    <h3>persons List</h3>
  
-    <c:if test="${!empty customerService.listCustomers()}">
+    <c:if test="${!empty personService.find()}">
         <table class="tg">
             <tr>
-                <th width="80">Customer ID</th>
-                <th width="120">Customer Name</th>
-                <th width="120">Customer City</th>
+                <th width="80">person ID</th>
+                <th width="120">person Name</th>
+                <th width="120">person City</th>
             </tr>
-            <ui:repeat value="${customerService.listCustomers()}" var="customer">
+            <ui:repeat value="${personService.find()}" var="person">
                 <tr>
-                    <td>${customer.id}</td>
-                    <td>${customer.name}</td>
-                    <td>${customer.city}</td>
+                    <td>${person.id}</td>
+                    <td>${person.name}</td>
+                    <td>${person.city}</td>
                 </tr>
             </ui:repeat>
         </table>
