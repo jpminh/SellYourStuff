@@ -1,4 +1,4 @@
-package authentication;
+package com.geekster.authentication;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

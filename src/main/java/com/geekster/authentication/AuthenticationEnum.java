@@ -1,4 +1,4 @@
-package authentication;
+package com.geekster.authentication;
 
 public enum AuthenticationEnum {
 	AUTORIZED("authorized"),

@@ -1,4 +1,6 @@
-package person;
+package com.geekster.person;
+
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
@@ -17,14 +19,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PERSON")
 @ManagedBean(name="person")
-public class PersonBean {
+public class PersonBean implements Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -2033836232049124233L;
+
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
+	@Column(name="NAME")
 	private String name;
 
+	@Column(name="CITY")
 	private String city;
 
 	public int getId() {

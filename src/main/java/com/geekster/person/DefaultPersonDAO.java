@@ -1,9 +1,10 @@
-package person;
+package com.geekster.person;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -13,26 +14,24 @@ public class DefaultPersonDAO implements PersonDAO{
 
 	private static final Logger logger = LoggerFactory.getLogger(DefaultPersonDAO.class);
 
-	private SessionFactory sessionFactory;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
 	public void add(PersonBean person) {
-		final Session session = this.sessionFactory.getCurrentSession();
-		session.persist(person);
+		entityManager.persist(person);
 		logger.info("Person saved successfully, person Details="+person);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PersonBean> find() {
-		final Session session = this.sessionFactory.getCurrentSession();
-		final List<PersonBean> personList = session.createQuery("from PersonBean").list();
-		return personList;
+		return entityManager.createQuery("from PersonBean").getResultList();
 	}
 
-
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.sessionFactory = sessionFactory;
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
+
 
 }

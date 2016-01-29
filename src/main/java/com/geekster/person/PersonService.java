@@ -1,7 +1,6 @@
-package person;
+package com.geekster.person;
 
 import java.util.List;
-
 
 public interface PersonService {
 	/**

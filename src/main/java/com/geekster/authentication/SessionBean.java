@@ -1,4 +1,4 @@
-package authentication;
+package com.geekster.authentication;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +17,13 @@ public class SessionBean {
 	}
 
 	public static String getUserName() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+		final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
 				.getExternalContext().getSession(false);
 		return session.getAttribute("username").toString();
 	}
 
 	public static String getUserId() {
-		HttpSession session = getSession();
+		final HttpSession session = getSession();
 		if (session != null)
 			return (String) session.getAttribute("userid");
 		else
