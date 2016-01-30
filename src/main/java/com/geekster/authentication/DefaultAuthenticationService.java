@@ -2,6 +2,7 @@ package com.geekster.authentication;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 @SessionScoped
 public class DefaultAuthenticationService implements AuthenticationService {
 
-	@Autowired
+	@ManagedProperty("#{defaultAuthenticationDAO}")
 	AuthenticationDAO authenticationDAO;
 
 	@Override
